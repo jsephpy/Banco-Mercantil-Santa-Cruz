@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMSC | Banco Mercantil Santa Cruz — El 1er Banco de Bolivia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #001e67;
+      --blue:    #003180;
+      --mid:     #1976d2;
+      --light:   #488fef;
+      --gold:    #C9A84C;
+      --gold-lt: #F0D080;
+      --white:   #ffffff;
+      --off:     #F4F6FB;
+      --text:    #0D1B3E;
+      --muted:   #6B7A99;
+      --border:  rgba(25,118,210,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(0, 24, 80, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .logo-text { color: var(--white); }
+    .logo-text strong { font-size: 15px; letter-spacing: 0.08em; font-weight: 600; display: block; }
+    .logo-text span { font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none; font-size: 13.5px; font-weight: 400;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      display: flex; gap: 10px; align-items: center;
+    }
+    .btn-outline-gold {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      padding: 8px 20px; border-radius: 6px;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.22s;
+      text-decoration: none;
+    }
+    .btn-outline-gold:hover { background: var(--gold); color: var(--navy); }
+    .btn-solid-gold {
+      background: linear-gradient(135deg, var(--gold), #e8c45a);
+      color: var(--navy);
+      border: none;
+      padding: 8px 20px; border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: transform 0.18s, box-shadow 0.18s;
+      text-decoration: none;
+    }
+    .btn-solid-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+
+    /* ─── HERO ──────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 55%, #00479b 100%);
+      position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+
+    /* Decorative grid lines */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Glowing orb */
+    .hero-orb {
+      position: absolute;
+      right: -100px; top: 50%;
+      transform: translateY(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(25,118,210,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-orb2 {
+      position: absolute;
+      left: -150px; bottom: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 120px 5vw 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 17px; line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px; max-width: 480px;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #e8c45a);
+      color: var(--navy);
+      padding: 14px 32px; border-radius: 8px;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      border: none; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.45); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white);
+      padding: 14px 32px; border-radius: 8px;
+      font-size: 15px; font-weight: 500; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 52px;
+      flex-wrap: wrap;
+    }
+    .stat-item { border-left: 2px solid rgba(201,168,76,0.4); padding-left: 16px; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; font-weight: 700; color: var(--white);
+    }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+
+    /* Card on right of hero */
+    .hero-card-wrap {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 32px;
+      width: 100%; max-width: 380px;
+      box-shadow: 0 40px 80px rgba(0,0,50,0.4);
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .card-bank {
+      background: linear-gradient(135deg, var(--mid), var(--navy));
+      border-radius: 16px;
+      padding: 24px; margin-bottom: 24px;
+      position: relative; overflow: hidden;
+    }
+    .card-bank::before {
+      content: '';
+      position: absolute; top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .card-bank-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+    .card-bank-num { font-size: 18px; color: var(--white); letter-spacing: 0.2em; margin: 10px 0 16px; font-family: 'DM Sans', monospace; }
+    .card-bank-row { display: flex; justify-content: space-between; align-items: flex-end; }
+    .card-bank-name { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 500; }
+    .card-bank-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-card-links { display: flex; flex-direction: column; gap: 10px; }
+    .quick-link {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 12px 16px;
+      cursor: pointer; transition: background 0.2s, transform 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .quick-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+    .quick-link-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .ql-blue { background: rgba(25,118,210,0.25); }
+    .ql-gold { background: rgba(201,168,76,0.2); }
+    .ql-green { background: rgba(76,175,80,0.2); }
+    .quick-link-text strong { display: block; font-size: 13px; color: var(--white); font-weight: 500; }
+    .quick-link-text span { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .quick-link-arrow { margin-left: auto; color: rgba(255,255,255,0.3); font-size: 16px; }
+
+    /* ─── SECTION COMMON ─────────────────────── */
+    section { padding: 90px 5vw; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--mid);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700; color: var(--text);
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+    /* ─── SERVICES STRIP ──────────────────────── */
+    .services-strip {
+      background: var(--off);
+      padding: 60px 5vw;
+    }
+    .services-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,31,103,0.1);
+      border-color: var(--mid);
+    }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: linear-gradient(135deg, #EBF2FF, #D6E8FF);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 16px;
+    }
+    .service-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PRODUCTS SECTION ──────────────────── */
+    .products { background: var(--white); }
+    .products-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 48px; gap: 24px; flex-wrap: wrap;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,31,103,0.12); }
+    .product-card-top {
+      padding: 32px 28px 24px;
+      position: relative; overflow: hidden;
+    }
+    .pc-blue { background: linear-gradient(135deg, var(--blue), var(--mid)); }
+    .pc-navy { background: linear-gradient(135deg, var(--navy), #002555); }
+    .pc-gold-bg { background: linear-gradient(135deg, #1a1206, #2d2008); }
+    .product-card-top::after {
+      content: '';
+      position: absolute; right: -30px; bottom: -30px;
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .product-chip {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .product-card-top h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--white); font-weight: 700;
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .product-rate {
+      font-size: 13px; color: rgba(255,255,255,0.65);
+    }
+    .product-rate strong {
+      font-size: 28px; color: var(--gold-lt); font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .product-card-bottom { padding: 20px 28px 24px; background: var(--white); }
+    .product-feature {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--muted); padding: 5px 0;
+    }
+    .product-feature::before {
+      content: '✓';
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #EBF5EB; color: #2d9437;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+    .product-cta {
+      margin-top: 18px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .product-link {
+      font-size: 13px; font-weight: 600; color: var(--mid);
+      text-decoration: none; letter-spacing: 0.03em;
+      transition: gap 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .product-link:hover { gap: 10px; }
+
+    /* ─── APP SECTION ───────────────────────── */
+    .app-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      position: relative; overflow: hidden;
+    }
+    .app-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .app-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 60px;
+      position: relative; z-index: 2;
+    }
+    .app-section .section-title { color: var(--white); }
+    .app-section .section-sub { color: rgba(255,255,255,0.65); }
+
+    .app-features { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .app-feature {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .af-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .af-text strong { display: block; font-size: 14px; color: var(--white); font-weight: 600; margin-bottom: 3px; }
+    .af-text span { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    .app-store-btns { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+    .store-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px; padding: 12px 20px;
+      cursor: pointer; transition: background 0.2s;
+      text-decoration: none;
+    }
+    .store-btn:hover { background: rgba(255,255,255,0.15); }
+    .store-btn-icon { font-size: 26px; }
+    .store-btn-text small { display: block; font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+    .store-btn-text strong { display: block; font-size: 14px; color: var(--white); font-weight: 600; }
+
+    /* Phone mockup */
+    .phone-wrap {
+      display: flex; justify-content: center; align-items: flex-end;
+      height: 500px; position: relative;
+    }
+    .phone {
+      width: 240px; height: 480px;
+      background: linear-gradient(160deg, #0d2b6b, #001540);
+      border-radius: 40px;
+      border: 6px solid rgba(255,255,255,0.15);
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,40,0.6), inset 0 0 0 1px rgba(255,255,255,0.06);
+      overflow: hidden;
+      animation: float 5s ease-in-out infinite;
+    }
+    .phone-notch {
+      width: 80px; height: 22px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 0 0 16px 16px;
+      margin: 0 auto;
+    }
+    .phone-screen { padding: 16px 16px 0; }
+    .phone-bal-label { font-size: 10px; color: rgba(255,255,255,0.4); text-align: center; margin-bottom: 4px; }
+    .phone-balance { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--white); text-align: center; font-weight: 700; }
+    .phone-sub { font-size: 10px; color: var(--gold); text-align: center; margin-bottom: 18px; }
+
+    .phone-actions { display: flex; justify-content: space-around; margin-bottom: 18px; }
+    .pa-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+    .pa-circle {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(25,118,210,0.3); border: 1px solid rgba(25,118,210,0.5);
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .pa-btn span { font-size: 9px; color: rgba(255,255,255,0.5); }
+
+    .phone-txns { background: rgba(255,255,255,0.04); border-radius: 14px; padding: 12px; }
+    .phone-txn-title { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .txn-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .txn-ico { width: 28px; height: 28px; border-radius: 8px; background: rgba(25,118,210,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .txn-info { flex: 1; }
+    .txn-info strong { display: block; font-size: 10px; color: var(--white); font-weight: 500; }
+    .txn-info span { font-size: 9px; color: rgba(255,255,255,0.35); }
+    .txn-amt { font-size: 11px; color: #4caf50; font-weight: 600; }
+    .txn-amt.neg { color: #ef5350; }
+
+    /* second phone */
+    .phone2 {
+      width: 200px; height: 400px;
+      background: linear-gradient(160deg, #0d1f4d, #000e2e);
+      border-radius: 36px;
+      border: 5px solid rgba(255,255,255,0.1);
+      position: absolute; right: 0; bottom: 30px;
+      box-shadow: 0 30px 60px rgba(0,0,40,0.5);
+      opacity: 0.6;
+      transform: rotate(8deg);
+      overflow: hidden;
+    }
+
+    /* ─── BRANCHES ──────────────────────────── */
+    .branches { background: var(--off); }
+    .branches-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px; margin-top: 48px;
+    }
+    .city-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .city-card:hover { transform: translateY(-3px); border-color: var(--mid); }
+    .city-flag { font-size: 28px; margin-bottom: 8px; }
+    .city-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .city-branches { font-size: 12px; color: var(--muted); }
+
+    /* ─── SECURITY BANNER ───────────────────── */
+    .security {
+      background: linear-gradient(90deg, #fff9ec 0%, #fff 50%, #f0f5ff 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 40px 5vw;
+    }
+    .security-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .security-icon { font-size: 36px; flex-shrink: 0; }
+    .security-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .security-text p { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 700px; }
+    .security-badge {
+      margin-left: auto;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--white); border: 1px solid var(--gold);
+      border-radius: 10px; padding: 10px 18px;
+      font-size: 12px; font-weight: 600; color: var(--gold);
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 64px 5vw 32px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 260px; margin-bottom: 20px; }
+    .social-links { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: pointer; transition: background 0.2s;
+    }
+    .social-btn:hover { background: rgba(201,168,76,0.2); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col a {
+      display: block; color: rgba(255,255,255,0.5);
+      text-decoration: none; font-size: 13px;
+      margin-bottom: 10px; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-asfi {
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.05); border-radius: 6px;
+      padding: 6px 12px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-card-wrap { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .app-inner { grid-template-columns: 1fr; }
+      .phone-wrap { height: 360px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      nav .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .security-badge { display: none; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ──────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-mark">B</div>
+      <div class="logo-text">
+        <strong>BMSC</strong>
+        <span>El 1er Banco de Bolivia</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#productos">Productos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#app">Banca Digital</a>
+      <a href="#sucursales">Sucursales</a>
+      <a href="#">Empresas</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-outline-gold">Banca en Línea</a>
+      <a href="#" class="btn-solid-gold">Abrir Cuenta</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-orb"></div>
+    <div class="hero-orb2"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">⭐ #1 Banco de Bolivia desde 1905</div>
+        <h1 class="hero-title">
+          Tu futuro financiero,<br>
+          <em>a la altura</em> de tus sueños
+        </h1>
+        <p class="hero-sub">
+          Con más de 120 años de trayectoria y la red más grande del país, 
+          BMSC te ofrece soluciones financieras inteligentes para crecer 
+          con confianza.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Abrir mi cuenta →</a>
+          <a href="#productos" class="btn-secondary">Ver productos</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">+93</div>
+            <div class="stat-label">Agencias</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">+350</div>
+            <div class="stat-label">Cajeros ATM</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">+457K</div>
+            <div class="stat-label">Clientes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">120+</div>
+            <div class="stat-label">Años</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card -->
+      <div class="hero-card-wrap">
+        <div class="hero-card">
+          <div class="card-bank">
+            <div class="card-bank-label">Tarjeta de Débito</div>
+            <div class="card-bank-num">•••• •••• •••• 4892</div>
+            <div class="card-bank-row">
+              <div class="card-bank-name">JUAN A. PÉREZ</div>
+              <div class="card-bank-logo">BMSC</div>
+            </div>
+          </div>
+          <div class="hero-card-links">
+            <a href="#" class="quick-link">
+              <div class="quick-link-icon ql-blue">💳</div>
+              <div class="quick-link-text">
+                <strong>Transferencias</strong>
+                <span>QR, otros bancos, celular</span>
+              </div>
+              <div class="quick-link-arrow">›</div>
+            </a>
+            <a href="#" class="quick-link">
+              <div class="quick-link-icon ql-gold">📈</div>
+              <div class="quick-link-text">
+                <strong>Inversiones</strong>
+                <span>Hasta 3.75% de interés</span>
+              </div>
+              <div class="quick-link-arrow">›</div>
+            </a>
+            <a href="#" class="quick-link">
+              <div class="quick-link-icon ql-green">🏠</div>
+              <div class="quick-link-text">
+                <strong>Crédito de Vivienda</strong>
+                <span>Hasta 20 años plazo</span>
+              </div>
+              <div class="quick-link-arrow">›</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY BANNER -->
+  <div class="security">
+    <div class="security-inner">
+      <div class="security-icon">🔒</div>
+      <div class="security-text">
+        <strong>Aviso de Seguridad</strong>
+        <p>BMSC nunca solicitará contraseñas, usuarios ni claves de tarjeta por correo, redes sociales o links externos. Si recibes alguna solicitud de este tipo, repórtalo en nuestras agencias o al <strong>68244442</strong>.</p>
+      </div>
+      <div class="security-badge">🛡️ &nbsp; Supervisado por ASFI</div>
+    </div>
+  </div>
+
+  <!-- SERVICES STRIP -->
+  <section class="services-strip" id="servicios">
+    <div class="section-inner" style="margin-bottom: 40px;">
+      <div class="section-label">Servicios Digitales</div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+        <h2 class="section-title" style="margin-bottom:0;">Todo lo que necesitas,<br>en un solo lugar</h2>
+        <a href="#" class="btn-outline-gold" style="color: var(--mid); border-color: var(--mid);">Ver todos →</a>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">📲</div>
+        <h3>Banca Móvil</h3>
+        <p>Gestiona tus cuentas, realiza transferencias y paga servicios desde tu celular las 24 horas.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔄</div>
+        <h3>Transferencias QR</h3>
+        <p>Paga y cobra instantáneamente usando la red Simple QR. Genera códigos con hasta 365 días de vigencia.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🏦</div>
+        <h3>Banca por Internet</h3>
+        <p>Accede a tu banca en línea desde cualquier dispositivo con la mayor seguridad del mercado.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">💸</div>
+        <h3>Envío a Celular</h3>
+        <p>Envía dinero a cualquier número de celular para retiro inmediato en cajeros BMSC.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🧾</div>
+        <h3>Pago de Servicios</h3>
+        <p>Paga telefonía, internet, TV, colegios y más desde la app sin filas ni esperas.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🎁</div>
+        <h3>Programa de Puntos</h3>
+        <p>Acumula puntos con tus compras y canjéalos por productos, vales y premios en efectivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products" id="productos">
+    <div class="section-inner">
+      <div class="products-header">
+        <div>
+          <div class="section-label">Productos Financieros</div>
+          <h2 class="section-title">Diseñados para<br>cada etapa de tu vida</h2>
+        </div>
+        <a href="#" style="color: var(--mid); font-size: 14px; font-weight: 600; text-decoration: none;">Ver catálogo completo →</a>
+      </div>
+      <div class="products-grid">
+
+        <!-- Savings -->
+        <div class="product-card fade-up">
+          <div class="product-card-top pc-blue">
+            <div class="product-chip">Ahorro</div>
+            <h3>Caja de Ahorros</h3>
+            <div class="product-rate">
+              Hasta <strong>3.75%</strong> TNA
+            </div>
+          </div>
+          <div class="product-card-bottom">
+            <div class="product-feature">Sin comisión de mantenimiento</div>
+            <div class="product-feature">Sorteos de premios en efectivo</div>
+            <div class="product-feature">Acceso desde la app móvil</div>
+            <div class="product-feature">Tarjeta de débito incluida</div>
+            <div class="product-cta">
+              <a href="#" class="product-link">Abrir ahora →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credit -->
+        <div class="product-card fade-up">
+          <div class="product-card-top pc-navy">
+            <div class="product-chip">Créditos</div>
+            <h3>Crédito de Vivienda</h3>
+            <div class="product-rate">
+              Hasta <strong>80%</strong> del valor
+            </div>
+          </div>
+          <div class="product-card-bottom">
+            <div class="product-feature">Plazo hasta 20 años</div>
+            <div class="product-feature">Compra, construcción o refacción</div>
+            <div class="product-feature">Tasas preferenciales BMSC</div>
+            <div class="product-feature">Asesoría personalizada</div>
+            <div class="product-cta">
+              <a href="#" class="product-link">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="product-card fade-up">
+          <div class="product-card-top pc-gold-bg">
+            <div class="product-chip" style="background: rgba(201,168,76,0.3); color: var(--gold-lt);">Premium</div>
+            <h3 style="color: var(--gold-lt);">Crédito Libre Disponibilidad</h3>
+            <div class="product-rate" style="color: rgba(240,208,128,0.6);">
+              Usa como <strong style="color: var(--gold-lt);">quieras</strong>
+            </div>
+          </div>
+          <div class="product-card-bottom">
+            <div class="product-feature">Viajes, estudios o lo que necesites</div>
+            <div class="product-feature">Aprobación ágil en línea</div>
+            <div class="product-feature">Sin cargos ocultos</div>
+            <div class="product-feature">Desembolso rápido</div>
+            <div class="product-cta">
+              <a href="#" class="product-link" style="color: var(--gold);">Conocer más →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section class="app-section" id="app">
+    <div class="app-inner section-inner">
+      <div>
+        <div class="section-label" style="color: var(--gold);">Banca Digital</div>
+        <h2 class="section-title">Tu banco en Bolivia,<br>estés donde estés</h2>
+        <p class="section-sub">
+          La nueva BMSC Móvil fue completamente rediseñada para ofrecerte una experiencia ágil, segura y personalizada. Confiada por más de 97,000 usuarios.
+        </p>
+        <div class="app-features">
+          <div class="app-feature fade-up">
+            <div class="af-icon">📊</div>
+            <div class="af-text">
+              <strong>Control total de tus cuentas</strong>
+              <span>Consulta saldos, movimientos y oculta tu saldo con un toque para mayor privacidad.</span>
+            </div>
+          </div>
+          <div class="app-feature fade-up">
+            <div class="af-icon">⚡</div>
+            <div class="af-text">
+              <strong>Transferencias instantáneas</strong>
+              <span>A cuentas propias, terceros y otros bancos. Menos campos, más rapidez.</span>
+            </div>
+          </div>
+          <div class="app-feature fade-up">
+            <div class="af-icon">🌍</div>
+            <div class="af-text">
+              <strong>Paga desde cualquier país</strong>
+              <span>Apoya a tu familia en Bolivia pagando servicios básicos, colegios e internet desde el exterior.</span>
+            </div>
+          </div>
+        </div>
+        <div class="app-store-btns">
+          <a href="#" class="store-btn">
+            <div class="store-btn-icon">🍎</div>
+            <div class="store-btn-text">
+              <small>Descarga en</small>
+              <strong>App Store</strong>
+            </div>
+          </a>
+          <a href="#" class="store-btn">
+            <div class="store-btn-icon">▶</div>
+            <div class="store-btn-text">
+              <small>Disponible en</small>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="phone-wrap">
+        <div class="phone2"></div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-bal-label">Saldo disponible</div>
+            <div class="phone-balance">Bs. 12,840</div>
+            <div class="phone-sub">Caja de Ahorros ✦ BMSC</div>
+            <div class="phone-actions">
+              <div class="pa-btn">
+                <div class="pa-circle">↗</div>
+                <span>Enviar</span>
+              </div>
+              <div class="pa-btn">
+                <div class="pa-circle">↙</div>
+                <span>Recibir</span>
+              </div>
+              <div class="pa-btn">
+                <div class="pa-circle">⊞</div>
+                <span>QR</span>
+              </div>
+              <div class="pa-btn">
+                <div class="pa-circle">⋯</div>
+                <span>Más</span>
+              </div>
+            </div>
+            <div class="phone-txns">
+              <div class="phone-txn-title">Movimientos</div>
+              <div class="txn-row">
+                <div class="txn-ico">🛒</div>
+                <div class="txn-info">
+                  <strong>Supermercado Ketal</strong>
+                  <span>Hoy, 10:34 am</span>
+                </div>
+                <div class="txn-amt neg">-Bs. 245</div>
+              </div>
+              <div class="txn-row">
+                <div class="txn-ico">💼</div>
+                <div class="txn-info">
+                  <strong>Salario Empresa S.R.L.</strong>
+                  <span>Ayer, 9:00 am</span>
+                </div>
+                <div class="txn-amt">+Bs. 4,800</div>
+              </div>
+              <div class="txn-row">
+                <div class="txn-ico">📡</div>
+                <div class="txn-info">
+                  <strong>Tigo Internet</strong>
+                  <span>12 May, 8:21 am</span>
+                </div>
+                <div class="txn-amt neg">-Bs. 199</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANCHES -->
+  <section class="branches" id="sucursales">
+    <div class="section-inner">
+      <div class="section-label">Cobertura Nacional</div>
+      <h2 class="section-title">Presentes en toda Bolivia</h2>
+      <p class="section-sub">93 agencias, más de 350 cajeros automáticos y canales digitales disponibles 24/7 en todo el país.</p>
+      <div class="branches-grid">
+        <div class="city-card fade-up">
+          <div class="city-flag">🏔</div>
+          <div class="city-name">La Paz</div>
+          <div class="city-branches">Sede Central · 20+ agencias</div>
+        </div>
+        <div class="city-card fade-up">
+          <div class="city-flag">🌿</div>
+          <div class="city-name">Santa Cruz</div>
+          <div class="city-branches">18+ agencias</div>
+        </div>
+        <div class="city-card fade-up">
+          <div class="city-flag">🏔</div>
+          <div class="city-name">Cochabamba</div>
+          <div class="city-branches">15+ agencias</div>
+        </div>
+        <div class="city-card fade-up">
+          <div class="city-flag">🌾</div>
+          <div class="city-name">Oruro</div>
+          <div class="city-branches">8+ agencias</div>
+        </div>
+        <div class="city-card fade-up">
+          <div class="city-flag">⛏</div>
+          <div class="city-name">Potosí</div>
+          <div class="city-branches">6+ agencias</div>
+        </div>
+        <div class="city-card fade-up">
+          <div class="city-flag">🏛</div>
+          <div class="city-name">Sucre</div>
+          <div class="city-branches">7+ agencias</div>
+        </div>
+        <div class="city-card fade-up">
+          <div class="city-flag">🌴</div>
+          <div class="city-name">Tarija</div>
+          <div class="city-branches">5+ agencias</div>
+        </div>
+        <div class="city-card fade-up" style="background: linear-gradient(135deg, var(--blue), var(--mid)); border-color: var(--mid); cursor: pointer;">
+          <div class="city-flag" style="filter: grayscale(0);">📍</div>
+          <div class="city-name" style="color: white;">Ver todas</div>
+          <div class="city-branches" style="color: rgba(255,255,255,0.6);">Mapa de agencias →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-mark">B</div>
+            <div class="logo-text">
+              <strong>BMSC</strong>
+              <span>El 1er Banco de Bolivia</span>
+            </div>
+          </div>
+          <p>Fundado en 1905, Banco Mercantil Santa Cruz es la institución financiera privada más grande de Bolivia, comprometida con el desarrollo del país y el bienestar de sus clientes.</p>
+          <div class="social-links">
+            <div class="social-btn">f</div>
+            <div class="social-btn">𝕏</div>
+            <div class="social-btn">in</div>
+            <div class="social-btn">▶</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Personas</h4>
+          <a href="#">Caja de Ahorros</a>
+          <a href="#">Cuentas Corrientes</a>
+          <a href="#">Tarjetas de Crédito</a>
+          <a href="#">Crédito de Vivienda</a>
+          <a href="#">Crédito Personal</a>
+          <a href="#">Inversiones</a>
+        </div>
+        <div class="footer-col">
+          <h4>Empresas</h4>
+          <a href="#">Cuentas Empresariales</a>
+          <a href="#">Crédito Empresarial</a>
+          <a href="#">Comercio Exterior</a>
+          <a href="#">Leasing</a>
+          <a href="#">Factoring</a>
+          <a href="#">Tesorería</a>
+        </div>
+        <div class="footer-col">
+          <h4>Atención</h4>
+          <a href="#">Central de Consultas</a>
+          <a href="#">📞 78812000</a>
+          <a href="#">💬 WhatsApp: 63770777</a>
+          <a href="#">Punto de Reclamo</a>
+          <a href="#">Ubica tu agencia</a>
+          <a href="#">Preguntas frecuentes</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Banco Mercantil Santa Cruz S.A. — Todos los derechos reservados.</p>
+        <div class="footer-asfi">Entidad supervisada por ASFI</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Navbar shadow on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 20
+        ? '0 4px 30px rgba(0,0,40,0.4)'
+        : 'none';
+    });
+  </script>
+</body>
+</html>
